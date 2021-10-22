@@ -9,6 +9,83 @@
     <link href="./style.css" rel="stylesheet">
 </head>
 <body>
+    <!-- header -->
+    <header class="relative flex w-full  h-screen overflow-hidden">
+        <div class="w-full z-30 h-[85px] bg-black bg-opacity-70 flex items-center justify-center">
+            <nav class="container mx-auto flex">
+                <img src="img/logo.png" alt="" class="">
+                <ul class="flex flex-1 justify-end items-center gap-4 text-white text-lg font-thin">
+                    <li class="cursor-pointer">filmler</li>
+                    <li class="cursor-pointer">diziler</li>
+                    <li class="cursor-pointer">yorumlar</li>
+                    <li class="cursor-pointer">listeler</li>
+                    <li class="cursor-pointer opacity-20">türler</li>
+                    <li class="cursor-pointer">
+                        <button type="button" class="border-t-4 border-red-400 px-4 py-4 text-sm">giriş yap</button>
+                    </li>
+                    <li class="cursor-pointer">
+                        <button type="button" class="border-t-4 border-green-400 px-4 py-4 text-sm">kaydol</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>           
+        <img src="img/1.jpg" class="absolute z-10 w-full h-screen max-w-none"/>
+    </header>
 
+    <!-- nasıl çalışır -->
+    <section class="py-12">
+        <div class="container mx-auto">
+            <h3 class="text-white text-2xl font-semibold">Nasıl Çalışır?</h3>
+            <div class=" grid grid-cols-1 md:grid-cols-4  gap-12 mt-4">
+                <div class="flex flex-col rounded-md border border-gray-600">
+                    <div class="group p-6 flex flex-col items-center">
+                        <i class="fas fa-heart text-4xl text-gray-400 group-hover:text-red-600 transition duration-600"></i>
+                        <h3 class="mt-5 mb-2 text-lg">Beğendim</h3>
+                        <p class="mb-2 text-gray-400 text-center font-thin text">Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır.</p>    
+                    </div>
+                    <hr class="border-b border-gray-400">
+                </div>
+
+                <div class="group flex flex-col rounded-md border border-gray-600">
+                    <div class="p-6 flex flex-col items-center">
+                        <i class="fas fa-eye text-4xl text-gray-400 group-hover:text-green-400 transition duration-600"></i>
+                        <h3 class="mt-5 mb-2 text-lg">İzledim</h3>
+                        <p class="mb-2 text-gray-400 text-center font-thin">Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır.</p>    
+                    </div>
+                    <hr class="border-b border-gray-400">
+                </div>
+                
+                <div class="group flex flex-col rounded-md border border-gray-600">
+                    <div class="p-6 flex flex-col items-center">
+                        <i class="fas fa-plus text-4xl text-gray-400 group-hover:text-yellow-600 transition duration-600"></i>
+                        <h3 class="mt-5 mb-2 text-lg">Daha Sonra İzle</h3>
+                        <p class="mb-2 text-gray-400 text-center  font-thin">Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır.</p>    
+                    </div>
+                    <hr class="border-b border-gray-400">
+                </div>
+
+                <div class="group flex flex-col rounded-md border border-gray-600">
+                    <div class="p-6 flex flex-col items-center">
+                        <i class="fas fa-comment text-4xl text-gray-400 group-hover:text-gray-200 transition duration-600"></i>
+                        <h3 class="mt-5 mb-2 text-lg">Yorumla</h3>
+                        <p class="mb-2 text-gray-400 text-center  font-thin">Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır.</p>    
+                    </div>
+                    <hr class="border-b border-gray-400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- En Çok İzlenenler -->
+    <section class="py-12">
+        <div class="container mx-auto">
+            <h3 class="text-white text-2xl font-semibold">En Çok İzlenenler</h3>
+            <div class="group grid grid-cols-1 lg:grid-cols-8 gap-4 mt-4">
+                <div class="flex flex-col rounded-md border border-gray-600">
+                  <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
