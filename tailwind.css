@@ -9,6 +9,6 @@
     body{
         font-family: 'Montserrat', sans-serif;
         color:#fff;
-        @apply bg-gray-800
+        @apply bg-gray-900
     }
 }
