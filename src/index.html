@@ -10,21 +10,21 @@
 </head>
 <body>
     <!-- header -->
-    <header class="relative flex w-full  h-screen overflow-hidden">
+    <header class="relative flex w-full h-[500px] lg:h-screen overflow-hidden">
         <div class="w-full z-30 h-[85px] bg-black bg-opacity-70 flex items-center justify-center">
-            <nav class="container mx-auto flex">
-                <img src="img/logo/logo.png" alt="" class="">
-                <ul class="flex flex-1 justify-end items-center gap-4 text-white text-lg font-thin">
-                    <li class="cursor-pointer">filmler</li>
-                    <li class="cursor-pointer">diziler</li>
-                    <li class="cursor-pointer">yorumlar</li>
-                    <li class="cursor-pointer">listeler</li>
+            <nav class="container mx-auto flex invisible lg:visible">
+                <img src="img/logo/logo.png" alt="" class="visible justify-center"/>
+                <ul class="flex flex-1 justify-end items-center gap-4 font-thin">
+                    <li class="cursor-pointer hover:underline">filmler</li>
+                    <li class="cursor-pointer hover:underline">diziler</li>
+                    <li class="cursor-pointer hover:underline">yorumlar</li>
+                    <li class="cursor-pointer hover:underline">listeler</li>
                     <li class="cursor-pointer opacity-20">türler</li>
                     <li class="cursor-pointer">
-                        <button type="button" class="border-t-4 border-red-400 px-4 py-4 text-sm">giriş yap</button>
+                        <button type="button" class="border-t-2 border-green-400 px-4 py-4 text-sm hover:border-0 hover:border-b-2 transition-all duration-100 ease-in-out">giriş yap</button>
                     </li>
                     <li class="cursor-pointer">
-                        <button type="button" class="border-t-4 border-green-400 px-4 py-4 text-sm">kaydol</button>
+                        <button type="button" class="border-t-2 border-red-400 px-4 py-4 text-sm hover:border-0 hover:border-b-2 transition-all duration-100 ease-in-out">kaydol</button>
                     </li>
                 </ul>
             </nav>
@@ -33,10 +33,10 @@
     </header>
 
     <!-- nasıl çalışır -->
-    <section class="py-12">
+    <section class="py-12  px-2 lg:px-0">
         <div class="container mx-auto">
             <h3 class="text-white text-2xl font-semibold">Nasıl Çalışır?</h3>
-            <div class=" grid grid-cols-1 md:grid-cols-4  gap-12 mt-4">
+            <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mt-4">
                 <div class="flex flex-col rounded-md border border-gray-600">
                     <div class="group p-6 flex flex-col items-center">
                         <i class="fas fa-heart text-4xl text-gray-400 group-hover:text-red-600 transition duration-600"></i>
@@ -77,82 +77,83 @@
     </section>
 
     <!-- En Çok İzlenenler -->
-    <section class="py-12">
+    <section class="py-12 px-2 lg:px-0">
         <div class="container mx-auto">
             <h3 class="text-white text-2xl font-semibold">En Çok İzlenenler</h3>
-            <div class="grid grid-cols-1 lg:grid-cols-6 gap-8 mt-4">
-                <div class="flex flex-col group justify-center text-center items-center">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mt-4">
+                <div class="flex flex-col group justify-center text-center items-center ">
                     <div class="absolute hidden group-hover:block duration-700 ease-in-out">
                         <i class="fas fa-eye text-2xl text-green-400"></i>
-                        <h5 class="font-semibold text-xl">798</h5>
+                        <h5 class="font-semibold text-xl">18.243</h5>
                     </div>
-                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dSNlnUeB06UnxCNrErn1Gsndz1Y.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
+                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
                 </div>
 
-                <div class="flex flex-col group justify-center text-center items-center">
+                <div class="flex flex-col group justify-center text-center items-center ">
                     <div class="absolute hidden group-hover:block duration-700 ease-in-out">
                         <i class="fas fa-eye text-2xl text-green-400"></i>
-                        <h5 class="font-semibold text-xl">633</h5>
+                        <h5 class="font-semibold text-xl">12.633</h5>
                     </div>
-                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dSNlnUeB06UnxCNrErn1Gsndz1Y.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
+                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fgm8OZ7o4G1G1I9EeGcb85Noe6L.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
                 </div>
 
-                <div class="flex flex-col group justify-center text-center items-center">
+                <div class="flex flex-col group justify-center text-center items-center ">
                     <div class="absolute hidden group-hover:block duration-700 ease-in-out">
                         <i class="fas fa-eye text-2xl text-green-400"></i>
-                        <h5 class="font-semibold text-xl">633</h5>
+                        <h5 class="font-semibold text-xl">9.877</h5>
                     </div>
-                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dSNlnUeB06UnxCNrErn1Gsndz1Y.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
+                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ji3ecJphATlVgWNY0B0RVXZizdf.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
                 </div>
 
-                <div class="flex flex-col group justify-center text-center items-center">
+                <div class="flex flex-col group justify-center text-center items-center ">
                     <div class="absolute hidden group-hover:block duration-700 ease-in-out">
                         <i class="fas fa-eye text-2xl text-green-400"></i>
-                        <h5 class="font-semibold text-xl">633</h5>
+                        <h5 class="font-semibold text-xl">6.834</h5>
                     </div>
-                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dSNlnUeB06UnxCNrErn1Gsndz1Y.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
+                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
                 </div>
 
-                <div class="flex flex-col group justify-center text-center items-center">
+                <div class="flex flex-col group justify-center text-center items-center ">
                     <div class="absolute hidden group-hover:block duration-700 ease-in-out">
                         <i class="fas fa-eye text-2xl text-green-400"></i>
-                        <h5 class="font-semibold text-xl">633</h5>
+                        <h5 class="font-semibold text-xl">3.281</h5>
                     </div>
-                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dSNlnUeB06UnxCNrErn1Gsndz1Y.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
+                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2hFvxCCWrTmCYwfy7yum0GKRi3Y.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
                 </div>
 
-                <div class="flex flex-col group justify-center text-center items-center">
+                <div class="flex flex-col group justify-center text-center items-center ">
                     <div class="absolute hidden group-hover:block duration-700 ease-in-out">
                         <i class="fas fa-eye text-2xl text-green-400"></i>
-                        <h5 class="font-semibold text-xl">633</h5>
+                        <h5 class="font-semibold text-xl">2.021</h5>
                     </div>
-                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dSNlnUeB06UnxCNrErn1Gsndz1Y.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
+                  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/c2gsmSQ2Cqv8zosqKOCwRS0GFBS.jpg" class="group-hover:opacity-20 transition duration-700 ease-in-out hover:cursor-pointer" alt="">
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section class="py-12">
+    <!-- Son Eklenen Listeler -->
+    <section class="py-12 px-2 lg:px-0">
         <div class="container mx-auto">
             <h3 class="text-white text-2xl font-semibold">Son Eklenen Listeler</h3>
-            <div class="grid grid-cols-1 lg:grid-cols-7 gap-8 mt-4">
+            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-8 mt-4">
 
                 <div class="flex flex-col group justify-end text-center items-center">
                     <div class="absolute mb-8">
                        <img src="img/logo/favi.png" alt="" class="w-12">
                     </div>
-                    <img src="img/list/jw.jpg" alt="" class="">
+                    <img src="img/list/jw.jpg" alt="" class="w-[300px] h-[350px] md:w-auto h-auto">
                 </div>
 
             </div>
         </div>
     </section>
 
-    <section class="py-12">
+    <!-- Popüler Üyeler -->
+    <section class="py-12 px-2 lg:px-0">
         <div class="container mx-auto">
             <h3 class="text-white text-2xl font-semibold">Popüler Üyeler</h3>
-            <div class="grid grid-cols-1 lg:grid-cols-6 gap-8 mt-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8 mt-4">
                 <div class="flex flex-col">
                     <div class="group p-6 flex flex-col items-center md:border-r-2 border-gray-600">
                         <img src="img/profile/td.jpg" class="rounded-full w-32 h-32 border-dashed border-8 border-green-600 cursor-pointer"/>
@@ -216,14 +217,15 @@
         </div>
     </section>
 
-    <section class="py-12">
+    <!-- Rastgele Film & Son Yorumlar -->
+    <section class="py-12 px-2 lg:px-0">
         <div class="container mx-auto">
-            <div class="grid grid-cols-4 mt-4">
-                <div class="col-span-3 text-center mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4">
+                <div class="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-3 text-center mx-auto">
                     <h3 class="text-white text-2xl font-semibold">Rastgele Film Önerisi</h3>
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dSNlnUeB06UnxCNrErn1Gsndz1Y.jpg" alt="" class="w-[350px] h-[475px] mt-4">
+                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lr3cYNDlJcpT1EWzFH42aSIvkab.jpg" alt="" class="w-[350px] h-[475px] mt-4 border-8">
                 </div>
-                <div class="col-span-1 text-center ">
+                <div class="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-1 mx-auto text-center mt-5 lg:mt-0">
                     <h3 class="text-white text-2xl font-semibold">Son Yorumlar</h3>
                     <hr class="border-t-1 border-gray-600 mt-4">
 
@@ -275,14 +277,14 @@
         </div>
     </section>
 
-    
-    <footer class="py-12 border-t-2 border-gray-600">
+    <!-- Footer -->   
+    <footer class="py-12 border-t-2 border-gray-600 px-5 lg:px-0">
         <div class="container mx-auto">
-            <div class="grid grid-cols-6">
-                <div class="col-span-1 mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4">
+                <div class="col-span-4 md:col-span-1 mx-auto mt-5">
                     <img src="img/logo/favi.png" alt="" width="50" height="50">
                 </div>
-                <div class="col-span-5">
+                <div class="col-span-4 md:col-span-3 mt-5">
                     <p class="text-justify text-gray-600">
                         Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
                     </p>
