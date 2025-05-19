@@ -1,0 +1,82 @@
+name: Build and Deploy to Huawei Cloud ECS
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  REGISTRY: swr.${{ secrets.HUAWEI_CLOUD_REGION }}.myhuaweicloud.com
+  REPO_NAME: listeraf
+  IMAGE_TAG: ${{ github.run_id }}
+  ECS_USERNAME: root
+  CONTAINER_NAME: listeraf
+  CONTAINER_PORT: 80
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Huawei Cloud SWR
+        run: |
+          echo "${{ secrets.HUAWEI_CLOUD_SK }}" | docker login -u "${{ secrets.HUAWEI_CLOUD_REGION }}@<huawei-account-id>" --password-stdin ${{ env.REGISTRY }}
+        env:
+          DOCKER_CLI_EXPERIMENTAL: enabled
+
+      - name: Build and Push Docker Image
+        run: |
+          IMAGE=${{ env.REGISTRY }}/${{ secrets.HUAWEI_CLOUD_ORG }}/${{ env.REPO_NAME }}:${{ env.IMAGE_TAG }}
+          docker build -t $IMAGE .
+          docker push $IMAGE
+        env:
+          DOCKER_BUILDKIT: 1
+
+  deploy-to-ecs:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        ecs:
+          - { ip: ${{ secrets.ECS_1_IP }}, password: ${{ secrets.ECS_1_PASSWORD }} }
+
+    steps:
+      - name: Deploy to ECS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ matrix.ecs.ip }}
+          username: ${{ env.ECS_USERNAME }}
+          password: ${{ matrix.ecs.password }}
+          timeout: 30s
+          command_timeout: 10m
+          script: |
+            set -e
+            echo "Connecting to ECS at ${{ matrix.ecs.ip }}"
+
+            docker login -u "${{ secrets.HUAWEI_CLOUD_REGION }}@<huawei-account-id>" -p "${{ secrets.HUAWEI_CLOUD_SK }}" ${{ env.REGISTRY }} || {
+              echo "ERROR: SWR login failed"
+              exit 1
+            }
+
+            IMAGE=${{ env.REGISTRY }}/${{ secrets.HUAWEI_CLOUD_ORG }}/${{ env.REPO_NAME }}:${{ env.IMAGE_TAG }}
+            docker pull $IMAGE || {
+              echo "ERROR: Failed to pull image $IMAGE"
+              exit 1
+            }
+
+            docker stop ${{ env.CONTAINER_NAME }} 2>/dev/null || true
+            docker rm ${{ env.CONTAINER_NAME }} 2>/dev/null || true
+
+            docker run -d --name ${{ env.CONTAINER_NAME }} -p ${{ env.CONTAINER_PORT }}:${{ env.CONTAINER_PORT }} $IMAGE || {
+              echo "ERROR: Failed to start container"
+              exit 1
+            }
+
+            echo "SUCCESS: Deployed $IMAGE to ECS at ${{ matrix.ecs.ip }}"
