@@ -37,8 +37,9 @@ jobs:
             docker login -u ${{ secrets.SWR_USERNAME }} -p ${{ secrets.SWR_PASSWORD }} swr.tr-west-1.myhuaweicloud.com
 
             docker pull $FULL_IMAGE
+            docker run -d --name myapp -p 80:80 $FULL_IMAGE
+      
+      #      docker stop myapp || true
+      #      docker rm myapp || true
 
-            docker stop myapp || true
-            docker rm myapp || true
-
-            docker run -d --name myapp -p 80:3000 $FULL_IMAGE
+            
