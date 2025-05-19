@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Log in to Huawei Cloud SWR
-        run: echo "${{ secrets.SWR_PASSWORD }}" | docker login -u "${{ secrets.SWR_USERNAME }}" --password-stdin swr.${{ secrets.SWR_REGION }}.myhuaweicloud.com
+        run: echo "${{ secrets.SWR_PASSWORD }}" | docker login -u "${{ secrets.SWR_USERNAME }}" --password-stdin swr.tr-west-1.myhuaweicloud.com
 
       - name: Build Docker image
         run: docker build -t $FULL_IMAGE .
@@ -37,7 +37,7 @@ jobs:
           username: ${{ secrets.ECS_USERNAME }}
           key: ${{ secrets.ECS_SSH_KEY }}
           script: |
-            docker login -u ${{ secrets.SWR_USERNAME }} -p ${{ secrets.SWR_PASSWORD }} swr.${{ secrets.SWR_REGION }}.myhuaweicloud.com
+            docker login -u ${{ secrets.SWR_USERNAME }} -p ${{ secrets.SWR_PASSWORD }} swr.tr-west-1.myhuaweicloud.com
             docker pull $FULL_IMAGE
             docker stop myapp || true
             docker rm myapp || true
