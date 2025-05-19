@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.ECS_USERNAME }}
           password: ${{ secrets.ECS_SSH_KEY }}
           script: |
-            docker login -u ${{ secrets.SWR_USERNAME }} -p ${{ secrets.SWR_PASSWORD }} swr.${{ secrets.SWR_REGION }}.myhuaweicloud.com
+            docker login -u ${{ secrets.SWR_USERNAME }} -p ${{ secrets.SWR_PASSWORD }} swr.tr-west-1.myhuaweicloud.com
 
             docker pull $FULL_IMAGE
 
