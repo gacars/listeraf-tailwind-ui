@@ -26,19 +26,18 @@ jobs:
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        host: [ ${{ secrets.ECS1_HOST }}, ${{ secrets.ECS2_HOST }} ]
     steps:
-      - name: Deploy to ECS
+      - name: Deploy to ECS via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ matrix.host }}
+          host: ${{ secrets.ECS1_HOST }}
           username: ${{ secrets.ECS_USERNAME }}
           key: ${{ secrets.ECS_SSH_KEY }}
           script: |
-            docker login -u ${{ secrets.SWR_USERNAME }} -p ${{ secrets.SWR_PASSWORD }} swr.tr-west-1.myhuaweicloud.com
+            docker login -u ${{ secrets.SWR_USERNAME }} -p ${{ secrets.SWR_PASSWORD }} swr.${{ secrets.SWR_REGION }}.myhuaweicloud.com
+
             docker pull $FULL_IMAGE
-            docker stop myapp || true
-            docker rm myapp || true
-            docker run -d --name myapp -p 80:80 $FULL_IMAGE
+
+            docker stop myapp || true && docker rm myapp || true
+
+            docker run -d --name myapp -p 80:3000 $FULL_IMAGE
