@@ -38,7 +38,19 @@ jobs:
             IMAGE=swr.tr-west-1.myhuaweicloud.com/gorkem/listeraf:${{ github.sha }}
             docker pull $IMAGE
             docker run -d --name myapp -p 80:80 $IMAGE
-      
+            
+      - name: Deploy to ECS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.ECS2_HOST }}
+          username: ${{ secrets.ECS_USERNAME }}
+          password: ${{ secrets.ECS_SSH_KEY }}
+          script: |
+            docker login -u ${{ secrets.SWR_USERNAME }} -p ${{ secrets.SWR_PASSWORD }} swr.tr-west-1.myhuaweicloud.com
+            IMAGE=swr.tr-west-1.myhuaweicloud.com/gorkem/listeraf:${{ github.sha }}
+            docker pull $IMAGE
+            docker run -d --name myapp -p 80:80 $IMAGE
+            
       #      docker stop myapp || true
       #      docker rm myapp || true
 
