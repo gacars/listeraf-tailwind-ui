@@ -18,7 +18,7 @@ jobs:
         run: echo "${{ secrets.SWR_PASSWORD }}" | docker login -u "${{ secrets.SWR_USERNAME }}" --password-stdin swr.tr-west-1.myhuaweicloud.com
 
       - name: Build Docker image
-        run: docker build -t $FULL_IMAGE .
+        run: docker build -t $FULL_IMAGE . # Checking Dockerfile
 
       - name: Push Docker image to SWR
         run: docker push $FULL_IMAGE
@@ -40,20 +40,4 @@ jobs:
             docker stop myapp || true
             docker rm myapp || true
             docker run -d --name myapp -p 80:80 $IMAGE
-            
-      - name: Deploy to ECS via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.ECS2_HOST }}
-          username: ${{ secrets.ECS_USERNAME }}
-          password: ${{ secrets.ECS_SSH_KEY }}
-          script: |
-            docker login -u ${{ secrets.SWR_USERNAME }} -p ${{ secrets.SWR_PASSWORD }} swr.tr-west-1.myhuaweicloud.com
-            IMAGE=swr.tr-west-1.myhuaweicloud.com/gorkem/listeraf:${{ github.sha }}
-            docker pull $IMAGE
-            docker run -d --name myapp -p 80:80 $IMAGE
-            
-      #      docker stop myapp || true
-      #      docker rm myapp || true
-
             
